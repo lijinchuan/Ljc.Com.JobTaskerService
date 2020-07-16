@@ -163,10 +163,11 @@ namespace Ljc.Com.JobTaskerService
 
         public static bool BatchSubmiting(int[] objids)
         {
-            var tasks= BigEntityTableEngine.LocalEngine.FindBatch<JobTaskEntity>(nameof(JobTaskEntity), objids.Select(p => (object)p).ToArray()).ToArray();
+            //var tasks= BigEntityTableEngine.LocalEngine.FindBatch<JobTaskEntity>(nameof(JobTaskEntity), objids.Select(p => (object)p).ToArray()).ToArray();
 
-            foreach(var item in tasks)
+            foreach(var id in objids)
             {
+                var item = BigEntityTableEngine.LocalEngine.Find<JobTaskEntity>(nameof(JobTaskEntity), id);
                 item.State = JobState.Submiting;
                 BigEntityTableEngine.LocalEngine.Update<JobTaskEntity>(nameof(JobTaskEntity), item);
             }
