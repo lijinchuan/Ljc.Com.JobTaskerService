@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LJC.FrameWorkV3.Data.EntityDataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceProcess;
@@ -16,6 +17,7 @@ namespace Ljc.Com.JobTaskerService
         static void Main()
         {
 #if DEBUG
+            LJC.FrameWorkV3.HttpApi.APIFactory.Init("Ljc.Com.JobTaskerService");
             TaskJobCore.ResetHungUpTask();
             var timer = LJC.FrameWorkV3.Comm.TaskHelper.SetInterval(1000, () =>
             {
@@ -23,6 +25,7 @@ namespace Ljc.Com.JobTaskerService
                 return false;
             });
             Console.Read();
+            BigEntityTableEngine.LocalEngine.ShutDown();
 #else
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]

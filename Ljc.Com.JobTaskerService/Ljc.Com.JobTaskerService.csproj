@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\LJC.FrameWorkV3.HttpApi.dll</HintPath>
     </Reference>
+    <Reference Include="LJC.FrameWorkV3.Net">
+      <HintPath>..\DLL\LJC.FrameWorkV3.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
